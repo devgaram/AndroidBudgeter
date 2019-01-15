@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font_xxs">15dp</dimen>
+    <dimen name="font_xs">20dp</dimen>
+    <dimen name="font_s">25dp</dimen>
+    <dimen name="font_m">30dp</dimen>
+    <dimen name="font_l">35dp</dimen>
+    <dimen name="font_xl">40dp</dimen>
+    <dimen name="font_xxl">50dp</dimen>
+
+    <dimen name="mb_s">5dp</dimen>
+    <dimen name="mb_m">10dp</dimen>
+    <dimen name="mb_l">20dp</dimen>
+    <dimen name="mb_xl">40dp</dimen>
+    <dimen name="mb_xxl">80dp</dimen>
+    <dimen name="mb_xxxl">100dp</dimen>
+</resources>
