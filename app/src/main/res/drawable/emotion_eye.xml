@@ -3,4 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <solid android:color="@color/colorDefaultFont"/>
+    <size
+        android:width="50dp"
+        android:height="50dp"></size>
 </shape>
