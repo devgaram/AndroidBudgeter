@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:drawable="@drawable/vector_emotion_mouth">
+
+     <target android:name="mouthPath">
+        <aapt:attr name="android:animation">
+            <set
+                android:fillAfter="false"
+                android:ordering="sequentially">
+                <objectAnimator
+                    android:duration="1500"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="pathData"
+                    android:valueFrom="@string/mouth_1"
+                    android:valueTo="@string/mouth_2"
+                    android:valueType="pathType" />
+                 <objectAnimator
+                    android:duration="1500"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="pathData"
+                    android:valueFrom="@string/mouth_2"
+                    android:valueTo="@string/mouth_3"
+                    android:valueType="pathType" />
+                <objectAnimator
+                    android:duration="1500"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="pathData"
+                    android:valueFrom="@string/mouth_3"
+                    android:valueTo="@string/mouth_4"
+                    android:valueType="pathType" />
+                <objectAnimator
+                    android:duration="1500"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="pathData"
+                    android:valueFrom="@string/mouth_4"
+                    android:valueTo="@string/mouth_5"
+                    android:valueType="pathType" />
+            </set>
+        </aapt:attr>
+    </target>
+
+</animated-vector>

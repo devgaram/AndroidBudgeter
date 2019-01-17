@@ -5,87 +5,95 @@
     android:id="@+id/main_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:background="@drawable/main_gradation_bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/day_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/mb_l">
+        android:layout_marginTop="@dimen/mb_l"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumsquarebfont"
                 android:text="1"
-                android:textSize="@dimen/font_s"
-                android:textColor="@color/colorDefaultFont"/>
+                android:textColor="@color/colorDefaultFont"
+                android:textSize="@dimen/font_s" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="/"
                 android:layout_marginLeft="@dimen/mb_s"
                 android:layout_marginRight="@dimen/mb_s"
                 android:fontFamily="@font/nanumsquarebfont"
-                android:textSize="@dimen/font_s"
-                android:textColor="@color/colorDefaultFont"/>
+                android:text="/"
+                android:textColor="@color/colorDefaultFont"
+                android:textSize="@dimen/font_s" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10"
                 android:fontFamily="@font/nanumsquarebfont"
-                android:textSize="@dimen/font_s"
-                android:textColor="@color/colorDefaultFont"/>
+                android:text="10"
+                android:textColor="@color/colorDefaultFont"
+                android:textSize="@dimen/font_s" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="days"
                 android:layout_marginLeft="@dimen/mb_s"
                 android:fontFamily="@font/nanumsquarebfont"
-                android:textSize="@dimen/font_s"
-                android:textColor="@color/colorDefaultFont"/>
+                android:text="days"
+                android:textColor="@color/colorDefaultFont"
+                android:textSize="@dimen/font_s" />
         </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="@dimen/mb_l"
             android:fontFamily="@font/nanumsquarerfont"
             android:text="@string/welcome_msg"
-            android:textSize="@dimen/font_xxs"
             android:textAlignment="center"
-            android:layout_marginTop="@dimen/mb_l"/>
+            android:textSize="@dimen/font_xxs" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/emotion_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:layout_weight="1"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/emotion_eye"
-                android:layout_marginRight="@dimen/mb_xxl"/>
+                android:layout_marginRight="@dimen/mb_xxl"
+                android:src="@drawable/emotion_eye" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/emotion_eye"
-                android:layout_marginLeft="@dimen/mb_xxl"/>
+                android:layout_marginLeft="@dimen/mb_xxl"
+                android:src="@drawable/emotion_eye" />
         </LinearLayout>
 
         <ImageView
@@ -93,33 +101,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ani_emotion" />
+            android:src="@drawable/ani_emotion_mouth" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <FrameLayout
             android:id="@+id/balance_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <fragment
                 android:id="@+id/budget_fragment"
                 android:name="org.androidtown.mybudgeter.BudgetFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </FrameLayout>
+
         <FrameLayout
             android:id="@+id/list_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/mb_xl">
+
             <fragment
                 android:id="@+id/list_fragment"
                 android:name="org.androidtown.mybudgeter.ListFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </FrameLayout>
 
     </LinearLayout>
