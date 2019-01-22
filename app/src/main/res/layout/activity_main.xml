@@ -123,16 +123,10 @@
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/list_container"
+            android:id="@+id/list_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/mb_xl">
-
-            <fragment
-                android:id="@+id/list_fragment"
-                android:name="org.androidtown.mybudgeter.ListFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
         </FrameLayout>
 
     </LinearLayout>

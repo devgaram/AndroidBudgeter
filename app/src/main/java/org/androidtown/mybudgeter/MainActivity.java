@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
@@ -20,9 +20,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        BudgetFragment budgetFragment = (BudgetFragment) fragmentManager.findFragmentById(R.id.budget_fragment);
-
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            ListFragment listFragment = new ListFragment();
+            transaction.replace(R.id.list_fragment_container, listFragment);
+            transaction.commit();
+        }
 
             ImageView imageView = (ImageView) findViewById(R.id.emotion_mouse);
             Drawable drawable = imageView.getDrawable();
