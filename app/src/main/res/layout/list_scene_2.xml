@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
     android:id="@+id/container"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/mb_xxl"
+    android:paddingRight="@dimen/mb_xxl">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/list_container"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/round_border"
+        android:orientation="vertical">
+    </LinearLayout>
+
+</FrameLayout>

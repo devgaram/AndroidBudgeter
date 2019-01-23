@@ -6,12 +6,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 public class ListFragment extends Fragment implements View.OnTouchListener {
 
@@ -20,7 +23,7 @@ public class ListFragment extends Fragment implements View.OnTouchListener {
     private Scene mListScene1;
     private Scene mListScene2;
     private TransitionManager mTransitionManager;
-    private View containerScene1;
+    Transition mFadeTransition;
 
     public static ListFragment newInstance() {
         return new ListFragment();
@@ -38,15 +41,9 @@ public class ListFragment extends Fragment implements View.OnTouchListener {
         /* 레이아웃 전환 기본 셋팅*/
         mListSceneRoot = (ViewGroup) view.findViewById(R.id.list_scene_root);
         mListScene1 = new Scene(mListSceneRoot, (View) mListSceneRoot.findViewById(R.id.container));
-        containerScene1 = mListSceneRoot.findViewById(R.id.list_container);
-        containerScene1.setOnTouchListener(this);
-
+        mListSceneRoot.findViewById(R.id.list_container).setOnTouchListener(this);
         mListScene2 = Scene.getSceneForLayout(mListSceneRoot, R.layout.list_scene_2, getActivity());
-
-
-
-
-
+        mFadeTransition = TransitionInflater.from(getActivity()).inflateTransition(R.transition.fade_transition);
         return view;
     }
 
@@ -60,21 +57,29 @@ public class ListFragment extends Fragment implements View.OnTouchListener {
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         final int action = event.getAction();
+        int pointY = 0;
+        int eventY = 0;
+        int height = 0;
+        int width = 0;
 
         switch (action) {
             case MotionEvent.ACTION_DOWN :
-                Log.i("drag","start");
+                pointY = Math.round(event.getY());
+                height =v.getHeight();
+                width = v.getWidth();
                 return true;
             case MotionEvent.ACTION_MOVE :
-                Log.i("drag",event.getX() + "," + event.getY());
+                eventY = Math.round(event.getY());
+                height+=pointY-eventY;
+                width +=pointY-eventY;
+                Log.i("chk",height+"");
+                v.setLayoutParams(new FrameLayout.LayoutParams(width,height));
                 return true;
             case MotionEvent.ACTION_UP :
-                Log.i("drag","end");
-                TransitionManager.go(mListScene2);
+                TransitionManager.go(mListScene2,mFadeTransition);
                 return false;
-
-
         }
         return false;
     }
+
 }
