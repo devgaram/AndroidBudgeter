@@ -1,6 +1,7 @@
 package org.androidtown.mybudgeter;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,12 +10,11 @@ import android.transition.Scene;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.view.animation.TranslateAnimation;
 
 public class ListFragment extends Fragment implements View.OnTouchListener {
 
@@ -24,14 +24,17 @@ public class ListFragment extends Fragment implements View.OnTouchListener {
     private Scene mListScene2;
     private TransitionManager mTransitionManager;
     Transition mFadeTransition;
+    Transition mUpTransition;
+    Transition mDownTransition;
+
+    // 리스트 터치이벤트 필요 변수
+    float pointY;
+    float firstPointY;
 
     public static ListFragment newInstance() {
         return new ListFragment();
     }
-
-    public ListFragment() {
-
-    }
+    public ListFragment() {}
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -39,11 +42,14 @@ public class ListFragment extends Fragment implements View.OnTouchListener {
         View view = inflater.inflate(R.layout.list_fragment, container, false);
         assert view != null; // 조건식이 false면 AssertionError 발생
         /* 레이아웃 전환 기본 셋팅*/
+        view.bringToFront();
         mListSceneRoot = (ViewGroup) view.findViewById(R.id.list_scene_root);
         mListScene1 = new Scene(mListSceneRoot, (View) mListSceneRoot.findViewById(R.id.container));
-        mListSceneRoot.findViewById(R.id.list_container).setOnTouchListener(this);
         mListScene2 = Scene.getSceneForLayout(mListSceneRoot, R.layout.list_scene_2, getActivity());
         mFadeTransition = TransitionInflater.from(getActivity()).inflateTransition(R.transition.fade_transition);
+        mUpTransition = TransitionInflater.from(getActivity()).inflateTransition(R.transition.up_transition);
+        mDownTransition = TransitionInflater.from(getActivity()).inflateTransition(R.transition.down_transition);
+        mListScene1.getSceneRoot().findViewById(R.id.list_container_1).setOnTouchListener(this);
         return view;
     }
 
@@ -54,32 +60,69 @@ public class ListFragment extends Fragment implements View.OnTouchListener {
         // TODO: Use the ViewModel
     }
 
+
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        final int action = event.getAction();
-        int pointY = 0;
-        int eventY = 0;
-        int height = 0;
-        int width = 0;
+        float eventY = 0;
+        int id = v.getId();
 
-        switch (action) {
+        switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN :
-                pointY = Math.round(event.getY());
-                height =v.getHeight();
-                width = v.getWidth();
-                return true;
+                if (id == R.id.list_container_1) {
+                    TranslateAnimation animate = new TranslateAnimation(0, 0, v.getHeight(), 0);
+                    animate.setDuration(300);
+                    animate.setBackgroundColor(Color.WHITE);
+                    animate.setFillAfter(true);
+                    v.startAnimation(animate);
+                    firstPointY = event.getRawY();
+                    pointY = event.getRawY();
+                } else if (id == R.id.list_container_2) {
+                    firstPointY = event.getRawY();
+                    pointY = event.getRawY();
+                } else {
+                }
+                break;
             case MotionEvent.ACTION_MOVE :
-                eventY = Math.round(event.getY());
-                height+=pointY-eventY;
-                width +=pointY-eventY;
-                Log.i("chk",height+"");
-                v.setLayoutParams(new FrameLayout.LayoutParams(width,height));
-                return true;
+                if (id == R.id.list_container_1) {
+                    if (firstPointY-pointY > 50) {
+                        /*FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) v.getLayoutParams();
+                        eventY = event.getRawY();
+                        layoutParams.rightMargin -= (pointY - eventY) / 3;
+                        layoutParams.leftMargin -= (pointY - eventY) / 3;
+                        layoutParams.height += pointY - eventY;
+                        layoutParams.bottomMargin = 10;
+                        v.setLayoutParams(layoutParams);*/
+
+                        TransitionManager.go(mListScene2, mUpTransition);
+                        mListScene2.getSceneRoot().findViewById(R.id.list_container_2).setOnTouchListener(this);
+                        mListScene2.getSceneRoot().findViewById(R.id.list_container_2).onTouchEvent(event);
+
+                    }
+                    pointY = event.getRawY();
+                } else if (id == R.id.list_container_2) {
+                   if (pointY - firstPointY > 50) {
+
+                       TransitionManager.go(mListScene1, mDownTransition);
+                       mListScene1.getSceneRoot().findViewById(R.id.list_container_1).setOnTouchListener(this);
+                   }
+                    pointY = event.getRawY();
+                } else {
+                }
+                break;
             case MotionEvent.ACTION_UP :
-                TransitionManager.go(mListScene2,mFadeTransition);
-                return false;
+                if (id == R.id.list_container_1) {
+                    if (firstPointY-event.getRawY() > 50) {
+                        TransitionManager.go(mListScene2, mUpTransition);
+                        mListScene2.getSceneRoot().findViewById(R.id.list_container_2).setOnTouchListener(this);
+                        break;
+                    }
+                } else if (id == R.id.list_container_2) {
+                } else {
+                }
+                break;
         }
-        return false;
+        return true;
     }
 
 }

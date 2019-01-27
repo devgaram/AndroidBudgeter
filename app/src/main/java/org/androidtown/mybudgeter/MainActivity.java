@@ -9,11 +9,13 @@ import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.support.v7.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
     AnimationDrawable emotionAnimation;
     ImageView emotionImage;
+    Toolbar myToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
             transaction.replace(R.id.list_fragment_container, listFragment);
             transaction.commit();
         }
+
+        myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
 
             ImageView imageView = (ImageView) findViewById(R.id.emotion_mouse);
             Drawable drawable = imageView.getDrawable();

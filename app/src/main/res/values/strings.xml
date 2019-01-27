@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Budgeter</string>
+    <string name="app_name">버짓터</string>
     <string name="money">#65510</string>
     <string name="welcome_msg">Hello! I\'m your budgeter.\nWith me, you can save money.</string>
 
