@@ -1,156 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/main_gradation_bg"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_dehaze_white_28dp"
-            android:layout_gravity="left"
-            android:layout_marginRight="@dimen/mb_m"/>
+    <!--Top Appbar-->
+    <android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/specs_bar_height"
+            app:layout_scrollFlags="enterAlways"
+            android:background="@color/white"/>
+    </android.support.design.widget.AppBarLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_date_range_white_28dp"
-            android:layout_gravity="right"
-            android:layout_marginRight="@dimen/mb_m"/>
-
-    </android.support.v7.widget.Toolbar>
-
-    <LinearLayout
-        android:id="@+id/day_container"
+    <!--bottom navigation-->
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        app:itemIconTint="@drawable/bottom_navigation_colors"
+        app:itemTextColor="@drawable/bottom_navigation_colors"
+        app:menu="@menu/bottom_navigation_menu">
+    </android.support.design.widget.BottomNavigationView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquarebfont"
-                android:text="1"
-                android:textColor="@color/colorDefaultFont"
-                android:textSize="@dimen/font_s" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/mb_s"
-                android:layout_marginRight="@dimen/mb_s"
-                android:fontFamily="@font/nanumsquarebfont"
-                android:text="/"
-                android:textColor="@color/colorDefaultFont"
-                android:textSize="@dimen/font_s" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquarebfont"
-                android:text="10"
-                android:textColor="@color/colorDefaultFont"
-                android:textSize="@dimen/font_s" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/mb_s"
-                android:fontFamily="@font/nanumsquarebfont"
-                android:text="days"
-                android:textColor="@color/colorDefaultFont"
-                android:textSize="@dimen/font_s" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/mb_l"
-            android:fontFamily="@font/nanumsquarerfont"
-            android:text="@string/welcome_msg"
-            android:textAlignment="center"
-            android:textSize="@dimen/font_xxs" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/emotion_container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/mb_xxl"
-                android:src="@drawable/emotion_eye" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/mb_xxl"
-                android:src="@drawable/emotion_eye" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/emotion_mouse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ani_emotion_mouth" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- floating button-->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_spend_add"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        app:layout_anchor="@id/bottom_navigation"
+        app:layout_anchorGravity="center|top"
+        app:srcCompat="@drawable/ic_round_add_24px"
+        app:tint="@color/white"
+        app:elevation="8dp"
+        app:backgroundTint="@color/my_app_primary_color"/>
 
-        <FrameLayout
-            android:id="@+id/balance_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <fragment
-                android:id="@+id/budget_fragment"
-                android:name="org.androidtown.mybudgeter.BudgetFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/list_fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/mb_xl">
-        </FrameLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
