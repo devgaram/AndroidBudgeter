@@ -10,8 +10,10 @@
     <color name="colorPurple">#D1B6E1</color>
     <color name="colorDefaultFont">#FFFFFF</color>
 
-    <color name="my_app_primary_color">#58C9B9</color>
-    <color name="my_app_secondary_color">#D1B6E1</color>
+    <color name="my_app_primary_color">#45d9fd</color>
+    <color name="my_app_secondary_color">#ee2560</color>
+    <color name="my_app_third_color">#08182b</color>
+    <color name="my_app_four_color">#f4f4f4</color>
     <color name="my_app_background_color">#FFFFFF</color>
     <color name="my_app_error_color"></color>
     <color name="white">#FFFFFF</color>

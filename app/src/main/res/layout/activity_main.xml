@@ -8,13 +8,22 @@
     <!--Top Appbar-->
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        app:elevation="0dp">
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="@dimen/specs_bar_height"
             app:layout_scrollFlags="enterAlways"
-            android:background="@color/white"/>
+            android:background="@color/my_app_primary_color"/>
     </android.support.design.widget.AppBarLayout>
+
+    <!-- main viewpager -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
 
     <!--bottom navigation-->
     <android.support.design.widget.BottomNavigationView
@@ -29,15 +38,16 @@
     </android.support.design.widget.BottomNavigationView>
 
     <!-- floating button-->
+    <!--
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_spend_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottom_navigation"
-        app:layout_anchorGravity="center|top"
+        app:layout_anchorGravity="top|end"
         app:srcCompat="@drawable/ic_round_add_24px"
         app:tint="@color/white"
         app:elevation="8dp"
-        app:backgroundTint="@color/my_app_primary_color"/>
+        app:backgroundTint="@color/my_app_primary_color"/>-->
 
 </android.support.design.widget.CoordinatorLayout>
