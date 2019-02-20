@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="font_xxs">15dp</dimen>
+    <dimen name="font_xxxs">15dp</dimen>
+    <dimen name="font_xxs">18dp</dimen>
     <dimen name="font_xs">20dp</dimen>
     <dimen name="font_s">25dp</dimen>
     <dimen name="font_m">30dp</dimen>

@@ -3,51 +3,229 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/my_app_primary_color">
 
     <!--Top Appbar-->
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:elevation="0dp">
+        android:layout_width="match_parent">
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="@dimen/specs_bar_height"
             app:layout_scrollFlags="enterAlways"
-            android:background="@color/my_app_primary_color"/>
+            android:background="@color/white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.8"
+                    android:gravity="center_vertical"
+                    android:text="식비"
+                    android:textSize="@dimen/font_xxs"
+                    android:fontFamily="@font/nanumsquareeb"
+                    android:textColor="@color/my_app_text_color"/>
+                <android.support.design.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:gravity="end"
+                    style="@style/Widget.AppCompat.ImageButton"
+                    app:icon="@drawable/ic_round_add_24px"
+                    app:iconTint="@color/my_app_text_color"
+                    app:backgroundTint="Transparent"/>
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <!-- main viewpager -->
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+    <!--컨텐츠-->
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:id="@+id/layout_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/card_emotion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200dp"
+                android:backgroundTint="@color/white"
+                app:cardElevation="5dp">
+            </android.support.design.card.MaterialCardView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <android.support.design.card.MaterialCardView
+                    android:id="@+id/all_budget"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.5"
+                    android:minHeight="150dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:contentPadding="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="전체 예산"
+                        android:fontFamily="@font/nanumsquareeb"
+                        android:textSize="@dimen/font_xxxs"
+                        android:textColor="@color/my_app_text_color"/>
+                </android.support.design.card.MaterialCardView>
+                <android.support.design.card.MaterialCardView
+                    android:id="@+id/today_budget"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.5"
+                    android:minHeight="150dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp"
+                    app:contentPadding="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="오늘의 예산"
+                        android:fontFamily="@font/nanumsquareeb"
+                        android:textSize="@dimen/font_xxxs"
+                        android:textColor="@color/my_app_text_color"/>
+                </android.support.design.card.MaterialCardView>
+            </LinearLayout>
 
-    <!--bottom navigation-->
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/white"
-        app:itemIconTint="@drawable/bottom_navigation_colors"
-        app:itemTextColor="@drawable/bottom_navigation_colors"
-        app:menu="@menu/bottom_navigation_menu">
-    </android.support.design.widget.BottomNavigationView>
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/spend_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:contentPadding="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="다가오는 이벤트"
+                        android:textSize="@dimen/font_xxxs"
+                        android:textColor="@color/my_app_text_color"
+                        android:fontFamily="@font/nanumsquareeb"
+                        android:gravity="start"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/font_xxxs"
+                            android:text="11/5"
+                            android:textColor="@color/my_app_text_color"
+                            android:fontFamily="@font/nanumsquarer"
+                            android:layout_marginRight="5dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="가람이 결혼식"
+                            android:textSize="@dimen/font_xxxs"
+                            android:textColor="@color/my_app_text_color"
+                            android:fontFamily="@font/nanumsquarer"
+                            android:layout_marginRight="5dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/font_xxxs"
+                            android:text="50,000원"
+                            android:textColor="@color/my_app_text_color"
+                            android:fontFamily="@font/nanumsquarer"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:id="@+id/today_spend_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:minHeight="200dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_weight="0.7"
+                        android:fontFamily="@font/nanumsquareeb"
+                        android:text="오늘의 지출"
+                        android:textColor="@color/my_app_text_color"
+                        android:textSize="@dimen/font_xxxs" />
+
+                    <android.support.design.button.MaterialButton
+                        android:id="@+id/button_list_all"
+                        style="@style/TextAppearance.MaterialComponents.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.3"
+                        android:background="@color/white"
+                        android:gravity="right"
+                        android:padding="0dp"
+                        android:text="SEE ALL"
+                        android:textColor="@color/my_app_text_color" />
+                </LinearLayout>
+
+            </android.support.design.card.MaterialCardView>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
     <!-- floating button-->
-    <!--
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_spend_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/bottom_navigation"
-        app:layout_anchorGravity="top|end"
+        app:layout_anchor="@id/scroll_view"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_round_add_24px"
-        app:tint="@color/white"
-        app:elevation="8dp"
-        app:backgroundTint="@color/my_app_primary_color"/>-->
+        app:tint="@color/my_app_primary_color"
+        app:backgroundTint="@color/white"/>
 
 </android.support.design.widget.CoordinatorLayout>

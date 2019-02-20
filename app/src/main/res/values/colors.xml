@@ -13,6 +13,7 @@
     <color name="my_app_primary_color">#45d9fd</color>
     <color name="my_app_secondary_color">#ee2560</color>
     <color name="my_app_third_color">#08182b</color>
+    <color name="my_app_text_color">#3f3f40</color>
     <color name="my_app_four_color">#f4f4f4</color>
     <color name="my_app_background_color">#FFFFFF</color>
     <color name="my_app_error_color"></color>
