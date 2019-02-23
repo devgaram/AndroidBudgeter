@@ -1,7 +1,13 @@
 package org.androidtown.mybudgeter;
 
-import android.arch.lifecycle.ViewModel;
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
+import android.support.annotation.NonNull;
 
-public class BudgetViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+public class BudgetViewModel extends AndroidViewModel {
+
+    public BudgetViewModel(@NonNull Application application) {
+        super(application);
+
+    }
 }
