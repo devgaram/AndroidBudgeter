@@ -16,6 +16,7 @@
             android:layout_height="@dimen/specs_bar_height"
             app:layout_scrollFlags="enterAlways"
             android:background="@color/white">
+            <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,13 +39,13 @@
                     style="@style/Widget.AppCompat.ImageButton"
                     app:icon="@drawable/ic_round_add_24px"
                     app:iconTint="@color/my_app_text_color"
-                    app:backgroundTint="Transparent"/>
-            </LinearLayout>
+                    app:backgroundTint="@color/white"/>
+            </LinearLayout>-->
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
     <!--컨텐츠-->
-    <android.support.v4.widget.NestedScrollView
+   <android.support.v4.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -61,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="200dp"
                 android:backgroundTint="@color/white"
-                app:cardElevation="5dp">
+                app:cardElevation="4dp">
             </android.support.design.card.MaterialCardView>
 
             <LinearLayout
@@ -81,7 +82,7 @@
                     android:minHeight="150dp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="5dp"
-                    app:cardElevation="5dp"
+                    app:cardElevation="4dp"
                     app:contentPadding="10dp">
                     <TextView
                         android:layout_width="match_parent"
@@ -91,6 +92,7 @@
                         android:textSize="@dimen/font_xxxs"
                         android:textColor="@color/my_app_text_color"/>
                 </android.support.design.card.MaterialCardView>
+
                 <android.support.design.card.MaterialCardView
                     android:id="@+id/today_budget"
                     android:layout_width="0dp"
@@ -100,7 +102,7 @@
                     android:minHeight="150dp"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="5dp"
-                    app:cardElevation="5dp"
+                    app:cardElevation="4dp"
                     app:contentPadding="10dp">
                     <TextView
                         android:layout_width="match_parent"
@@ -123,7 +125,7 @@
                 android:layout_marginBottom="5dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="5dp"
-                app:cardElevation="5dp"
+                app:cardElevation="4dp"
                 app:contentPadding="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -199,17 +201,13 @@
                         android:textColor="@color/my_app_text_color"
                         android:textSize="@dimen/font_xxxs" />
 
-                    <android.support.design.button.MaterialButton
+                    <TextView
                         android:id="@+id/button_list_all"
-                        style="@style/TextAppearance.MaterialComponents.Button"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
                         android:background="@color/white"
-                        android:gravity="right"
-                        android:padding="0dp"
                         android:text="SEE ALL"
-                        android:textColor="@color/my_app_text_color" />
+                        android:textColor="@color/my_app_text_color"/>
                 </LinearLayout>
 
             </android.support.design.card.MaterialCardView>
