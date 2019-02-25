@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Budget.class}, version = 1, exportSchema = false)
+@Database(entities = {Budget.class, Expenditure.class}, version = 1, exportSchema = false)
 public abstract class BudgetDatabase extends RoomDatabase {
 
     private  static BudgetDatabase instance;
@@ -37,13 +37,11 @@ public abstract class BudgetDatabase extends RoomDatabase {
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private BudgetDao budgetDao;
 
-        private PopulateDbAsyncTask(BudgetDatabase db) {
-            budgetDao = db.budgetDao();
-        }
+        private PopulateDbAsyncTask(BudgetDatabase db) { budgetDao = db.budgetDao(); }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            budgetDao.insert(new Budget("식비",100000, "2019-02-25", "2019-03-25",28));
+            budgetDao.insert(new Budget("식비",100000, "2019-02-23", "2019-03-23",28));
             return null;
         }
     }
