@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/my_app_primary_color">
+    android:background="@color/white">
 
     <!--Top Appbar-->
     <android.support.design.widget.AppBarLayout
@@ -62,71 +62,29 @@
                 android:layout_height="wrap_content"
                 android:minHeight="200dp"
                 android:backgroundTint="@color/white"
-                app:cardElevation="4dp">
+                app:cardElevation="0dp">
             </android.support.design.card.MaterialCardView>
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-                <android.support.design.card.MaterialCardView
-                    android:id="@+id/all_budget"
-                    android:layout_width="0dp"
+                android:layout_height="wrap_content">
+                <fragment
+                    android:id="@+id/budget_fragment"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="0.5"
-                    android:minHeight="150dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="4dp"
-                    app:contentPadding="10dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="전체 예산"
-                        android:fontFamily="@font/nanumsquareeb"
-                        android:textSize="@dimen/font_xxxs"
-                        android:textColor="@color/my_app_text_color"/>
-                </android.support.design.card.MaterialCardView>
-
-                <android.support.design.card.MaterialCardView
-                    android:id="@+id/today_budget"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.5"
-                    android:minHeight="150dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="4dp"
-                    app:contentPadding="10dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="오늘의 예산"
-                        android:fontFamily="@font/nanumsquareeb"
-                        android:textSize="@dimen/font_xxxs"
-                        android:textColor="@color/my_app_text_color"/>
-                </android.support.design.card.MaterialCardView>
-            </LinearLayout>
+                    android:name="org.androidtown.mybudgeter.BudgetFragment"/>
+            </FrameLayout>
 
             <android.support.design.card.MaterialCardView
                 android:id="@+id/spend_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="50dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
+                android:layout_margin="5dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="5dp"
-                app:cardElevation="4dp"
-                app:contentPadding="10dp">
+                app:contentPadding="10dp"
+                app:cardElevation="2dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -177,15 +135,12 @@
                 android:id="@+id/today_spend_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:minHeight="200dp"
+                android:layout_margin="5dp"
+                android:minHeight="400dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="5dp"
-                app:cardElevation="5dp"
-                app:contentPadding="10dp">
+                app:contentPadding="10dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

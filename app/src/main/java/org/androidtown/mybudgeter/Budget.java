@@ -8,13 +8,13 @@ public class Budget {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private int title;
+    private String title;
     private int amount;
     private String startDate;
     private String endDate;
     private int period;
 
-    public Budget(int title, int amount, String startDate, String endDate, int period) {
+    public Budget(String title, int amount, String startDate, String endDate, int period) {
         this.title = title;
         this.amount = amount;
         this.startDate = startDate;
@@ -30,11 +30,11 @@ public class Budget {
         this.id = id;
     }
 
-    public int getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(int title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 

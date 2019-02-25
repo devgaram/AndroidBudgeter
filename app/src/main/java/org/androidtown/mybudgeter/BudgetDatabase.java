@@ -42,6 +42,7 @@ public abstract class BudgetDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
+            budgetDao.insert(new Budget("식비",100000, "2019-02-25", "2019-03-25",28));
             return null;
         }
     }
