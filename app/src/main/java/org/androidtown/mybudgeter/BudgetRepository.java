@@ -13,11 +13,11 @@ public class BudgetRepository {
     public BudgetRepository(Application application) {
         BudgetDatabase database = BudgetDatabase.getInstance(application);
         budgetDao = database.budgetDao();
-        allBudgets = budgetDao.getAllBudgets();
+        allBudgets = budgetDao.getAllbudgets();
     }
 
-    public void insert(Budget note) {
-        new InsertBudgetAsyncTask(budgetDao).execute(note);
+    public void insert(Budget budget) {
+        new InsertBudgetAsyncTask(budgetDao).execute(budget);
     }
 
     public LiveData<List<Budget>> getAllBudgets() {

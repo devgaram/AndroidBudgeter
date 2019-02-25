@@ -9,12 +9,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class BudgetFragment extends Fragment {
 
     private BudgetViewModel mViewModel;
+    private TextView mAllBudgetAmountTextView;
+    private TextView mAllBudgetRemainDateTextView;
+    private DecimalFormat decimalFormat;
 
     public static BudgetFragment newInstance() {
         return new BudgetFragment();
@@ -23,8 +28,12 @@ public class BudgetFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.budget_fragment, container, false);
-
+        View view = inflater.inflate(R.layout.budget_fragment, container, false);
+        mAllBudgetAmountTextView = (TextView) view.findViewById(R.id.all_budget_amount);
+        mAllBudgetRemainDateTextView = (TextView) view.findViewById(R.id.all_budget_remain_date);
+        decimalFormat = new DecimalFormat();
+        decimalFormat.applyPattern("#,#00");
+        return view;
     }
 
     @Override
@@ -34,9 +43,13 @@ public class BudgetFragment extends Fragment {
         // TODO: Use the ViewModel
         mViewModel.getAllBudgets().observe(this, new Observer<List<Budget>>() {
             @Override
-            public void onChanged(@Nullable List<Budget> budgets) {
-
-
+            public void onChanged(@Nullable List<Budget> allBudgets) {
+                if (!allBudgets.isEmpty()) {
+                    String allAmount = decimalFormat.format(allBudgets.get(0).getAmount());
+                    long remianPeriod = mViewModel.getRemainPeriod(allBudgets.get(0).getEndDate());
+                    mAllBudgetAmountTextView.setText(allAmount);
+                    mAllBudgetRemainDateTextView.setText(String.valueOf(remianPeriod));
+                }
             }
         });
     }
