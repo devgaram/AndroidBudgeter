@@ -44,137 +44,19 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <!--컨텐츠-->
-   <android.support.v4.widget.NestedScrollView
-        android:id="@+id/scroll_view"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout
-            android:id="@+id/layout_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <android.support.design.card.MaterialCardView
-                android:id="@+id/card_emotion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="200dp"
-                android:backgroundTint="@color/white"
-                app:cardElevation="0dp">
-            </android.support.design.card.MaterialCardView>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <fragment
-                    android:id="@+id/budget_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:name="org.androidtown.mybudgeter.BudgetFragment"/>
-            </FrameLayout>
-
-            <android.support.design.card.MaterialCardView
-                android:id="@+id/spend_event"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="50dp"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="5dp"
-                app:contentPadding="10dp"
-                app:cardElevation="2dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="다가오는 이벤트"
-                        android:textSize="@dimen/font_xxxs"
-                        android:textColor="@color/my_app_text_color"
-                        android:fontFamily="@font/nanumsquareeb"
-                        android:gravity="start"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="end">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:textSize="@dimen/font_xxxs"
-                            android:text="11/5"
-                            android:textColor="@color/my_app_text_color"
-                            android:fontFamily="@font/nanumsquarer"
-                            android:layout_marginRight="5dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="가람이 결혼식"
-                            android:textSize="@dimen/font_xxxs"
-                            android:textColor="@color/my_app_text_color"
-                            android:fontFamily="@font/nanumsquarer"
-                            android:layout_marginRight="5dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:textSize="@dimen/font_xxxs"
-                            android:text="50,000원"
-                            android:textColor="@color/my_app_text_color"
-                            android:fontFamily="@font/nanumsquarer"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </android.support.design.card.MaterialCardView>
-
-            <android.support.design.card.MaterialCardView
-                android:id="@+id/today_spend_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:minHeight="400dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="5dp"
-                app:contentPadding="10dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_weight="0.7"
-                        android:fontFamily="@font/nanumsquareeb"
-                        android:text="오늘의 지출"
-                        android:textColor="@color/my_app_text_color"
-                        android:textSize="@dimen/font_xxxs" />
-
-                    <TextView
-                        android:id="@+id/button_list_all"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:text="SEE ALL"
-                        android:textColor="@color/my_app_text_color"/>
-                </LinearLayout>
-
-            </android.support.design.card.MaterialCardView>
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.view.ViewPager>
 
     <!-- floating button-->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_spend_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/scroll_view"
+        app:layout_anchor="@id/pager"
         app:layout_anchorGravity="bottom|right"
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_round_add_24px"

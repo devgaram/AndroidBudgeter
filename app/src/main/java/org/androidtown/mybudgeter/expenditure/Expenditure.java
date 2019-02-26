@@ -1,8 +1,10 @@
-package org.androidtown.mybudgeter;
+package org.androidtown.mybudgeter.expenditure;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+
+import org.androidtown.mybudgeter.budget.Budget;
 
 @Entity(tableName = "expenditure_table",
         foreignKeys =

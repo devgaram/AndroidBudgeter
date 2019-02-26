@@ -1,4 +1,4 @@
-package org.androidtown.mybudgeter;
+package org.androidtown.mybudgeter.budget;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
@@ -7,6 +7,8 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+
+import org.androidtown.mybudgeter.expenditure.Expenditure;
 
 @Database(entities = {Budget.class, Expenditure.class}, version = 1, exportSchema = false)
 public abstract class BudgetDatabase extends RoomDatabase {
@@ -42,6 +44,7 @@ public abstract class BudgetDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
             budgetDao.insert(new Budget("식비",100000, "2019-02-23", "2019-03-23",28));
+            budgetDao.insert(new Budget("의류비",50000, "2019-02-23", "2019-03-23",28));
             return null;
         }
     }

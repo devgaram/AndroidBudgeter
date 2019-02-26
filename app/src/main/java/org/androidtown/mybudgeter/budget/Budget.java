@@ -1,4 +1,4 @@
-package org.androidtown.mybudgeter;
+package org.androidtown.mybudgeter.budget;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;

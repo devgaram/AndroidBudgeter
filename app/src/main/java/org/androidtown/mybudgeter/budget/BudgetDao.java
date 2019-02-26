@@ -1,4 +1,4 @@
-package org.androidtown.mybudgeter;
+package org.androidtown.mybudgeter.budget;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;

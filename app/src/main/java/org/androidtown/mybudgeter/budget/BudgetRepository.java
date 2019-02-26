@@ -1,4 +1,4 @@
-package org.androidtown.mybudgeter;
+package org.androidtown.mybudgeter.budget;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
@@ -9,6 +9,7 @@ import java.util.List;
 public class BudgetRepository {
     private BudgetDao budgetDao;
     private LiveData<List<Budget>> allBudgets;
+    private LiveData<Budget> budget;
 
     public BudgetRepository(Application application) {
         BudgetDatabase database = BudgetDatabase.getInstance(application);
@@ -22,6 +23,10 @@ public class BudgetRepository {
 
     public LiveData<List<Budget>> getAllBudgets() {
         return allBudgets;
+    }
+    public LiveData<Budget> getBudgetById(int budgetId) {
+        budget = budgetDao.getBudgetForId(budgetId);
+        return budget;
     }
 
     private static class InsertBudgetAsyncTask extends AsyncTask<Budget, Void, Void> {

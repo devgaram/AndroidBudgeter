@@ -1,4 +1,4 @@
-package org.androidtown.mybudgeter;
+package org.androidtown.mybudgeter.budget;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
@@ -13,6 +13,7 @@ public class BudgetViewModel extends AndroidViewModel {
 
     private BudgetRepository repository;
     private LiveData<List<Budget>> allBudgets;
+    private LiveData<Budget> budget;
 
     public BudgetViewModel(@NonNull Application application) {
         super(application);
@@ -22,6 +23,10 @@ public class BudgetViewModel extends AndroidViewModel {
 
     public LiveData<List<Budget>> getAllBudgets() {
         return allBudgets;
+    }
+    public LiveData<Budget> getBudgetById(int budgetId) {
+        budget = repository.getBudgetById(budgetId);
+        return budget;
     }
 
     public long getRemainPeriod(String strEndDate) {
@@ -43,6 +48,4 @@ public class BudgetViewModel extends AndroidViewModel {
 
         return calDays;
     }
-
-
 }
