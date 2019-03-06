@@ -8,24 +8,24 @@ import org.androidtown.mybudgeter.budget.Budget;
 
 @Entity(tableName = "expenditure_table",
         foreignKeys =
-        @ForeignKey(entity = Budget.class,
-                    parentColumns = "id",
-                    childColumns = "budgetId"
-        ))
+            @ForeignKey(entity = Budget.class,
+                        parentColumns = "id",
+                        childColumns = "budgetId")
+        )
 public class Expenditure {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
     private int budgetId;
-    private String gubun;
-    private String title;
+    private int typeId;
+    private String memo;
     private int amount;
     private String date;
 
-    public Expenditure(int budgetId, String gubun, String title, int amount, String date) {
+    public Expenditure(int budgetId, int typeId, String memo, int amount, String date) {
         this.budgetId = budgetId;
-        this.gubun = gubun;
-        this.title = title;
+        this.typeId = typeId;
+        this.memo = memo;
         this.amount = amount;
         this.date = date;
     }
@@ -46,20 +46,20 @@ public class Expenditure {
         this.budgetId = budgetId;
     }
 
-    public String getGubun() {
-        return gubun;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public void setGubun(String gubun) {
-        this.gubun = gubun;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getMemo() {
+        return memo;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setMemo(String memo) {
+        this.memo = memo;
     }
 
     public int getAmount() {

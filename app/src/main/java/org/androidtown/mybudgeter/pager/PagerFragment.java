@@ -14,16 +14,21 @@ import android.widget.TextView;
 import org.androidtown.mybudgeter.R;
 import org.androidtown.mybudgeter.budget.Budget;
 import org.androidtown.mybudgeter.budget.BudgetViewModel;
+import org.androidtown.mybudgeter.expenditure.Expenditure;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 
 public class PagerFragment extends Fragment {
     private BudgetViewModel budgetViewModel;
     private TextView mAllBudgetAmountTextView;
     private TextView mAllBudgetRemainDateTextView;
+    private TextView mAllBudgetBalanceTextView;
     private DecimalFormat decimalFormat;
     private int budgetId;
+    private int totalExpenditureAmount;
+    private int totalBudgetAmount;
 
     public static PagerFragment newInstance() {
         return new PagerFragment();
@@ -38,8 +43,11 @@ public class PagerFragment extends Fragment {
             budgetId = getArguments().getInt("budgetId");
             mAllBudgetAmountTextView = (TextView) view.findViewById(R.id.all_budget_amount);
             mAllBudgetRemainDateTextView = (TextView) view.findViewById(R.id.all_budget_remain_date);
+            mAllBudgetBalanceTextView = (TextView) view.findViewById(R.id.all_budget_balance);
             decimalFormat = new DecimalFormat();
             decimalFormat.applyPattern("#,#00");
+            totalExpenditureAmount = 0;
+            totalBudgetAmount = 0;
         }
         return view;
     }
@@ -53,12 +61,27 @@ public class PagerFragment extends Fragment {
             @Override
             public void onChanged(@Nullable Budget budget) {
                 if (budget != null) {
+                    totalBudgetAmount = budget.getAmount();
                     String allAmount = decimalFormat.format(budget.getAmount());
                     long remianPeriod = budgetViewModel.getRemainPeriod(budget.getEndDate());
                     mAllBudgetAmountTextView.setText(allAmount);
                     mAllBudgetRemainDateTextView.setText(String.valueOf(remianPeriod));
+
                 }
             }
         });
+        budgetViewModel.getExpendituresForBudget(budgetId).observe(this, new Observer<List<Expenditure>>() {
+            @Override
+            public void onChanged(@Nullable List<Expenditure> expenditures) {
+                if (expenditures != null) {
+                    for (Expenditure expenditure : expenditures) {
+                        totalExpenditureAmount += expenditure.getAmount();
+                    }
+                    mAllBudgetBalanceTextView.setText(decimalFormat.format(totalBudgetAmount-totalExpenditureAmount));
+                }
+            }
+        });
+
+
     }
 }

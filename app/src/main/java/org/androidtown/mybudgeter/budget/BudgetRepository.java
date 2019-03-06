@@ -4,6 +4,8 @@ import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
 
+import org.androidtown.mybudgeter.com.BudgeterDatabase;
+
 import java.util.List;
 
 public class BudgetRepository {
@@ -12,7 +14,7 @@ public class BudgetRepository {
     private LiveData<Budget> budget;
 
     public BudgetRepository(Application application) {
-        BudgetDatabase database = BudgetDatabase.getInstance(application);
+        BudgeterDatabase database = BudgeterDatabase.getInstance(application);
         budgetDao = database.budgetDao();
         allBudgets = budgetDao.getAllbudgets();
     }

@@ -1,4 +1,4 @@
-package org.androidtown.mybudgeter.budget;
+package org.androidtown.mybudgeter.com;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
@@ -8,19 +8,23 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
+import org.androidtown.mybudgeter.budget.Budget;
+import org.androidtown.mybudgeter.budget.BudgetDao;
 import org.androidtown.mybudgeter.expenditure.Expenditure;
+import org.androidtown.mybudgeter.expenditure.ExpenditureDao;
 
 @Database(entities = {Budget.class, Expenditure.class}, version = 1, exportSchema = false)
-public abstract class BudgetDatabase extends RoomDatabase {
+public abstract class BudgeterDatabase extends RoomDatabase {
 
-    private  static BudgetDatabase instance;
+    private  static BudgeterDatabase instance;
 
     public abstract BudgetDao budgetDao();
+    public abstract ExpenditureDao expenditureDao();
 
-    public static synchronized BudgetDatabase getInstance(Context context) {
+    public static synchronized BudgeterDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
-                    BudgetDatabase.class, "budget_database")
+                    BudgeterDatabase.class, "budget_database")
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
@@ -38,13 +42,23 @@ public abstract class BudgetDatabase extends RoomDatabase {
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private BudgetDao budgetDao;
+        private ExpenditureDao expenditureDao;
 
-        private PopulateDbAsyncTask(BudgetDatabase db) { budgetDao = db.budgetDao(); }
+        private PopulateDbAsyncTask(BudgeterDatabase db) {
+            budgetDao = db.budgetDao();
+            expenditureDao = db.expenditureDao();
+        }
 
         @Override
         protected Void doInBackground(Void... voids) {
             budgetDao.insert(new Budget("식비",100000, "2019-02-23", "2019-03-23",28));
             budgetDao.insert(new Budget("의류비",50000, "2019-02-23", "2019-03-23",28));
+            expenditureDao.insert(new Expenditure(1, 1, "점심다연", 8000, "2019-03-06"));
+            expenditureDao.insert(new Expenditure(1, 1, "점심2", 8000, "2019-03-06"));
+            expenditureDao.insert(new Expenditure(1, 1, "점심3", 8000, "2019-03-07"));
+            expenditureDao.insert(new Expenditure(1, 1, "점심4", 8000, "2019-03-08"));
+            expenditureDao.insert(new Expenditure(2, 1, "점심5", 8000, "2019-03-08"));
+            expenditureDao.insert(new Expenditure(2, 1, "점심6", 8000, "2019-03-09"));
             return null;
         }
     }
