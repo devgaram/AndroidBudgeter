@@ -17,8 +17,9 @@ import org.androidtown.mybudgeter.R;
 import org.androidtown.mybudgeter.budget.Budget;
 import org.androidtown.mybudgeter.budget.BudgetViewModel;
 import org.androidtown.mybudgeter.expenditure.Expenditure;
+import org.androidtown.mybudgeter.expenditure.ProcessedExpenditure;
 
-import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,7 +28,6 @@ public class PagerFragment extends Fragment {
     private TextView mAllBudgetAmountTextView;
     private TextView mAllBudgetRemainDateTextView;
     private TextView mAllBudgetBalanceTextView;
-    private DecimalFormat decimalFormat;
     private int budgetId;
     private int totalExpenditureAmount;
     private int totalBudgetAmount;
@@ -47,8 +47,6 @@ public class PagerFragment extends Fragment {
             mAllBudgetAmountTextView = (TextView) view.findViewById(R.id.all_budget_amount);
             mAllBudgetRemainDateTextView = (TextView) view.findViewById(R.id.all_budget_remain_date);
             mAllBudgetBalanceTextView = (TextView) view.findViewById(R.id.all_budget_balance);
-            decimalFormat = new DecimalFormat();
-            decimalFormat.applyPattern("#,#00");
             totalExpenditureAmount = 0;
             totalBudgetAmount = 0;
 
@@ -70,7 +68,7 @@ public class PagerFragment extends Fragment {
             public void onChanged(@Nullable Budget budget) {
                 if (budget != null) {
                     totalBudgetAmount = budget.getAmount();
-                    String allAmount = decimalFormat.format(budget.getAmount());
+                    String allAmount = budgetViewModel.getFormatAmount(budget.getAmount());
                     long remianPeriod = budgetViewModel.getRemainPeriod(budget.getEndDate());
                     mAllBudgetAmountTextView.setText(allAmount);
                     mAllBudgetRemainDateTextView.setText(String.valueOf(remianPeriod));
@@ -82,11 +80,16 @@ public class PagerFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Expenditure> expenditures) {
                 if (expenditures != null) {
-                    expenditureRecyclerAdapter.setExpenditures(expenditures);
+                    List<ProcessedExpenditure> processedExpenditures = new ArrayList<>();
+                    ProcessedExpenditure processedExpenditure;
+
                     for (Expenditure expenditure : expenditures) {
+                        processedExpenditure = new ProcessedExpenditure(expenditure.getId(), expenditure.getMemo(), budgetViewModel.getFormatAmount(expenditure.getAmount()));
+                        processedExpenditures.add(processedExpenditure);
                         totalExpenditureAmount += expenditure.getAmount();
                     }
-                    mAllBudgetBalanceTextView.setText(decimalFormat.format(totalBudgetAmount-totalExpenditureAmount));
+                    expenditureRecyclerAdapter.setExpenditures(processedExpenditures);
+                    mAllBudgetBalanceTextView.setText(budgetViewModel.getFormatAmount(totalBudgetAmount-totalExpenditureAmount));
                 }
             }
         });

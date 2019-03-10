@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import org.androidtown.mybudgeter.expenditure.Expenditure;
 import org.androidtown.mybudgeter.expenditure.ExpenditureRepository;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -58,4 +59,14 @@ public class BudgetViewModel extends AndroidViewModel {
 
         return calDays;
     }
+
+    public String getFormatAmount(int amount) {
+        DecimalFormat decimalFormat = new DecimalFormat();
+        String decimalAmount;
+        decimalFormat.applyPattern("#,#00");
+        decimalAmount = decimalFormat.format(amount);
+        return decimalAmount;
+    }
+
+
 }

@@ -8,13 +8,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.androidtown.mybudgeter.R;
-import org.androidtown.mybudgeter.expenditure.Expenditure;
+import org.androidtown.mybudgeter.expenditure.ProcessedExpenditure;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExpenditureRecyclerAdapter extends RecyclerView.Adapter<ExpenditureRecyclerAdapter.ExpenditureHolder> {
-    private List<Expenditure> expenditures = new ArrayList<>();
+    private List<ProcessedExpenditure> expenditures = new ArrayList<>();
 
     @NonNull
     @Override
@@ -25,12 +25,12 @@ public class ExpenditureRecyclerAdapter extends RecyclerView.Adapter<Expenditure
 
     @Override
     public void onBindViewHolder(@NonNull ExpenditureRecyclerAdapter.ExpenditureHolder expenditureHolder, int i) {
-        Expenditure currentExpenditure =expenditures.get(i);
+        ProcessedExpenditure currentExpenditure =expenditures.get(i);
         expenditureHolder.expenditureMemo.setText(currentExpenditure.getMemo());
-        expenditureHolder.expenditureAmount.setText(Integer.toString(currentExpenditure.getAmount()));
+        expenditureHolder.expenditureAmount.setText(currentExpenditure.getAmount());
     }
 
-    public void setExpenditures(List<Expenditure> expenditures) {
+    public void setExpenditures(List<ProcessedExpenditure> expenditures) {
         this.expenditures = expenditures;
         notifyDataSetChanged();
     }

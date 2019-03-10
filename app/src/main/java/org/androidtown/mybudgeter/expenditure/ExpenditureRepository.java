@@ -17,7 +17,7 @@ public class ExpenditureRepository {
     }
 
     public LiveData<List<Expenditure>> getExpendituresForBudget(int budgetId) {
-        allExpenditures = expenditureDao.getExpendituresForBudget(1);
+        allExpenditures = expenditureDao.getExpendituresForBudget(budgetId);
         return allExpenditures;
     }
 
