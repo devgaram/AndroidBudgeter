@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="specs_bar_height">56dp</dimen>
-    <dimen name="card_view_margin">5dp</dimen>
+    <dimen name="white_space_5">5dp</dimen>
+    <dimen name="white_space_10">10dp</dimen>
+    <dimen name="white_space_15">15dp</dimen>
+    <dimen name="white_space_20">20dp</dimen>
+    <dimen name="btn_bottom_height">60dp</dimen>
 </resources>

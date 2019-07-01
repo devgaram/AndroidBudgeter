@@ -53,6 +53,8 @@ public abstract class BudgeterDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
             budgetDao.insert(new Budget("식비",100000, "2019-02-23", "2019-03-23",28));
             budgetDao.insert(new Budget("의류비",50000, "2019-02-23", "2019-03-23",28));
+            budgetDao.insert(new Budget("데이트비용",300000, "2019-02-23", "2019-03-23",28));
+            budgetDao.insert(new Budget("생활비",150000, "2019-02-23", "2019-03-23",28));
             expenditureDao.insert(new Expenditure(1, 1, "점심다연", 8000, "2019-03-06"));
             expenditureDao.insert(new Expenditure(1, 1, "점심2", 8000, "2019-03-06"));
             expenditureDao.insert(new Expenditure(1, 1, "점심3", 8000, "2019-03-07"));

@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -44,23 +45,27 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    </android.support.v4.view.ViewPager>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/budget_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_budget"/>
+       </android.support.v4.widget.NestedScrollView>
 
     <!-- floating button-->
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btn_spend_add"
+        android:id="@+id/btn_add_budget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/pager"
+        app:layout_anchor="@id/scroll_view"
         app:layout_anchorGravity="bottom|right"
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_round_add_24px"
-        app:tint="@color/my_app_primary_color"
+        app:tint="@color/my_app_text_color"
         app:backgroundTint="@color/white"/>
-
 </android.support.design.widget.CoordinatorLayout>

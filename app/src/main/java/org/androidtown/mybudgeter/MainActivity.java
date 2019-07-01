@@ -2,52 +2,63 @@ package org.androidtown.mybudgeter;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
-import android.support.v4.view.ViewPager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import org.androidtown.mybudgeter.budget.Budget;
 import org.androidtown.mybudgeter.budget.BudgetViewModel;
-import org.androidtown.mybudgeter.pager.BudgetPagerAdapter;
-import org.androidtown.mybudgeter.pager.PagerFragment;
+import org.androidtown.mybudgeter.budget.ProcessedBudget;
+import org.androidtown.mybudgeter.budgetAdd.BudgetAddActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Pair<PagerFragment, String>> fragments;
     private BudgetViewModel budgetViewModel;
-    private BudgetPagerAdapter budgetPagerAdapter;
-    private PagerFragment pagerFragment;
+    private BudgetRecyclerAdapter budgetRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        budgetPagerAdapter = new BudgetPagerAdapter(getSupportFragmentManager());
+        RecyclerView recyclerView = findViewById(R.id.budget_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        budgetRecyclerAdapter = new BudgetRecyclerAdapter();
+        recyclerView.setAdapter(budgetRecyclerAdapter);
+
+        FloatingActionButton fab_budget = (FloatingActionButton)  findViewById(R.id.btn_add_budget);
+        fab_budget.setOnClickListener(new EventAddBudget());
 
         budgetViewModel = ViewModelProviders.of(this).get(BudgetViewModel.class);
         budgetViewModel.getAllBudgets().observe(this, new Observer<List<Budget>>() {
             @Override
             public void onChanged(@Nullable List<Budget> budgets) {
                 if (!budgets.isEmpty()) {
-                    fragments = new ArrayList<>();
+                    List<ProcessedBudget> processedBudgets = new ArrayList<>();
                     for (Budget budget : budgets) {
-                        pagerFragment = new PagerFragment();
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("budgetId", budget.getId());
-                        pagerFragment.setArguments(bundle);
-                        fragments.add(new Pair<>(pagerFragment, budget.getTitle()));
+                        ProcessedBudget processedBudget = new ProcessedBudget(budget.getTitle(), budget.getAmount());
+                        processedBudgets.add(processedBudget);
                     }
-                    budgetPagerAdapter.setPagerData(fragments);
-                    viewPager.setAdapter(budgetPagerAdapter);
+                    budgetRecyclerAdapter.setBudgets(processedBudgets);
                 }
             }
         });
+    }
+
+    class EventAddBudget implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            // new Intent(this~) 라고 하면 에러뜸.
+            Intent intent = new Intent(v.getContext(), BudgetAddActivity.class);
+            startActivity(intent);
+        }
     }
 
 
