@@ -19,4 +19,8 @@
     <color name="my_app_error_color"></color>
     <color name="white">#FFFFFF</color>
     <color name="grey">#eaeaea</color>
+    <color name="light_grey">#FFF9F9F9</color>
+
+    <color name="first_color">#58C9B9</color>
+    <color name="second_color">#E7FFF5</color>
 </resources>

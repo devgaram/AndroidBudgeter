@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import org.androidtown.mybudgeter.budget.Budget;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                         processedBudgets.add(processedBudget);
                     }
                     budgetRecyclerAdapter.setBudgets(processedBudgets);
-                }
+                } else Log.i("chk","empty");
             }
         });
     }

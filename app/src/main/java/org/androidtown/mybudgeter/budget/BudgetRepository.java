@@ -40,7 +40,7 @@ public class BudgetRepository {
 
         @Override
         protected Void doInBackground(Budget... budgets) {
-            budgetDao.insert(budgets[0]);
+            budgetDao.insertAll(budgets);
             return null;
         }
     }

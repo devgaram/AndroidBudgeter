@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/specs_height_max"
+    android:background="@drawable/bottom_edge_light">
+    <TextView
+        android:id="@+id/category_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/white_space_10"
+        android:textSize="@dimen/font_xs"
+        android:text="의류비"
+        android:gravity="center|left"
+        android:textColor="@color/my_app_text_color"/>
+</LinearLayout>

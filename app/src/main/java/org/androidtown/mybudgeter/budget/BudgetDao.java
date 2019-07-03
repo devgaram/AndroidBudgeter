@@ -27,4 +27,7 @@ public interface BudgetDao {
     @Query("SELECT * FROM budget_table WHERE id=:id")
     LiveData<Budget> getBudgetForId(int id);
 
+    @Insert
+    void insertAll(Budget... budgets);
+
 }

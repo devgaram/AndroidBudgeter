@@ -6,4 +6,6 @@
     <dimen name="white_space_15">15dp</dimen>
     <dimen name="white_space_20">20dp</dimen>
     <dimen name="btn_bottom_height">60dp</dimen>
+    <dimen name="specs_height">56dp</dimen>
+    <dimen name="specs_height_max">64dp</dimen>
 </resources>

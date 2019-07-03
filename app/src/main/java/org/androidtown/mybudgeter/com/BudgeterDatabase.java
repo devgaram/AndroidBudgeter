@@ -7,28 +7,39 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import org.androidtown.mybudgeter.budget.Budget;
 import org.androidtown.mybudgeter.budget.BudgetDao;
+import org.androidtown.mybudgeter.category.Category;
+import org.androidtown.mybudgeter.category.CategoryDao;
 import org.androidtown.mybudgeter.expenditure.Expenditure;
 import org.androidtown.mybudgeter.expenditure.ExpenditureDao;
 
-@Database(entities = {Budget.class, Expenditure.class}, version = 1, exportSchema = false)
+@Database(entities = {Budget.class, Expenditure.class, Category.class}, version = 1, exportSchema = false)
 public abstract class BudgeterDatabase extends RoomDatabase {
 
     private  static BudgeterDatabase instance;
 
     public abstract BudgetDao budgetDao();
     public abstract ExpenditureDao expenditureDao();
+    public abstract CategoryDao categoryDao();
 
     public static synchronized BudgeterDatabase getInstance(Context context) {
         if (instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(),
+            Log.i("chk","instance is null");
+            instance = Room.databaseBuilder(context,
                     BudgeterDatabase.class, "budget_database")
                     .fallbackToDestructiveMigration()
                     .addCallback(roomCallback)
                     .build();
+        } else {
+            Log.i("chk","instance is not null");
         }
+        return instance;
+    }
+
+    public static BudgeterDatabase getDB(){
         return instance;
     }
 
@@ -36,6 +47,7 @@ public abstract class BudgeterDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            Log.i("chk","pre-populate..");
             new PopulateDbAsyncTask(instance).execute();
         }
     };
@@ -43,10 +55,12 @@ public abstract class BudgeterDatabase extends RoomDatabase {
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private BudgetDao budgetDao;
         private ExpenditureDao expenditureDao;
+        private CategoryDao categoryDao;
 
         private PopulateDbAsyncTask(BudgeterDatabase db) {
             budgetDao = db.budgetDao();
             expenditureDao = db.expenditureDao();
+            categoryDao = db.categoryDao();
         }
 
         @Override
@@ -61,6 +75,10 @@ public abstract class BudgeterDatabase extends RoomDatabase {
             expenditureDao.insert(new Expenditure(1, 1, "점심4", 8000, "2019-03-08"));
             expenditureDao.insert(new Expenditure(2, 1, "점심5", 8000, "2019-03-08"));
             expenditureDao.insert(new Expenditure(2, 1, "점심6", 8000, "2019-03-09"));
+            categoryDao.insert(new Category(1, "식비"));
+            categoryDao.insert(new Category(2, "의류비"));
+            categoryDao.insert(new Category(3, "데이트비용"));
+            categoryDao.insert(new Category(4, "생활비"));
             return null;
         }
     }
