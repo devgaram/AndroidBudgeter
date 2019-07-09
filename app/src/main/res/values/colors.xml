@@ -8,7 +8,7 @@
     <color name="colorGoodStatusLight">#66ead8</color>
     <color name="colorGrey">#9DC8C8</color>
     <color name="colorPurple">#D1B6E1</color>
-    <color name="colorDefaultFont">#FFFFFF</color>
+    <color name="colorDefaultFont">#000000</color>
 
     <color name="my_app_primary_color">#45d9fd</color>
     <color name="my_app_secondary_color">#ee2560</color>
@@ -22,5 +22,5 @@
     <color name="light_grey">#FFF9F9F9</color>
 
     <color name="first_color">#58C9B9</color>
-    <color name="second_color">#E7FFF5</color>
+    <color name="second_color">#95E8CF</color>
 </resources>

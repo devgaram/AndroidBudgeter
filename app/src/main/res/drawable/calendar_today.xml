@@ -5,13 +5,15 @@
     android:width="50dp"
     android:viewportHeight="12"
     android:viewportWidth="12"
-    android:tint="@color/first_color">
+    android:tint="@color/light_grey">
 
     <group
-        android:name="mouthGroup">
+        android:name="mouthGroup"
+        android:pivotX="6"
+        android:pivotY="6">
         <path
             android:name="mouthPath"
             android:pathData="@string/path_circle"
-            android:fillColor="@color/first_color"/>
+            android:fillColor="@color/light_grey"/>
     </group>
 </vector>

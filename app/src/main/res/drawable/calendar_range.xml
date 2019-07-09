@@ -11,7 +11,7 @@
         android:name="mouthGroup">
         <path
             android:name="mouthPath"
-            android:pathData="@string/path_circle"
+            android:pathData="@string/path_rect"
             android:fillColor="@color/first_color"/>
     </group>
 </vector>

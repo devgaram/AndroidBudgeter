@@ -5,13 +5,14 @@
     android:width="50dp"
     android:viewportHeight="12"
     android:viewportWidth="12"
-    android:tint="@color/first_color">
+    android:tint="@android:color/black">
 
     <group
         android:name="mouthGroup">
         <path
             android:name="mouthPath"
             android:pathData="@string/path_circle"
-            android:fillColor="@color/first_color"/>
+            android:strokeWidth="0.5"
+            android:strokeColor="@android:color/black"/>
     </group>
 </vector>

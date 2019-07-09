@@ -80,6 +80,23 @@
                 tools:listitem="@layout/item_category"/>
         </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
+    <android.support.design.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_bottom_height"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/first_color">
+        <android.support.design.button.MaterialButton
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?android:attr/borderlessButtonStyle"
+            android:text="확인"
+            android:textColor="@color/my_app_text_color"
+            android:fontFamily="@font/nanumsquarer"
+            android:textSize="@dimen/font_xxs"
+            android:backgroundTint="@android:color/transparent"/>
+    </android.support.design.bottomappbar.BottomAppBar>
 
 
 </android.support.design.widget.CoordinatorLayout>

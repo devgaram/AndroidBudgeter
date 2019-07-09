@@ -5,6 +5,7 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.button.MaterialButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,6 +42,9 @@ public class AddCategoryFragment extends Fragment {
         categoryRecyclerAdapter = new CategoryRecyclerAdapter();
         categoryListView.setAdapter(categoryRecyclerAdapter);
 
+        MaterialButton btnConfirm = (MaterialButton) view.findViewById(R.id.btn_confirm);
+        btnConfirm.setOnClickListener(new EventBtnConfirm());
+
 
         categoryViewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
         categoryViewModel.getAllCategories().observe(this, new Observer<List<Category>>() {
@@ -55,6 +59,19 @@ public class AddCategoryFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public class EventBtnConfirm implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            AddPeriodFragment periodFragment = new AddPeriodFragment();
+            String periodTag = periodFragment.getClass().getSimpleName();
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, periodFragment, periodTag)
+                    .addToBackStack(periodTag)
+                    .commit();
+        }
     }
 
 
