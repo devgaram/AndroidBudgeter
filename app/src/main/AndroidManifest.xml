@@ -11,14 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".budgetAdd.BudgetAddActivity"></activity>
+        <activity android:name=".view.addbudget.BudgetAddActivity" />
+        <activity
+            android:name=".view.addexpenditure.ExpenditureAddActivity"
+            android:label="@string/title_activity_expenditure_add"
+            android:theme="@style/Theme.MyApp"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".view.budgetdetail.BudgetDetailActivity"></activity>
     </application>
 
 </manifest>

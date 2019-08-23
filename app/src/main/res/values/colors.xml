@@ -10,10 +10,10 @@
     <color name="colorPurple">#D1B6E1</color>
     <color name="colorDefaultFont">#000000</color>
 
-    <color name="my_app_primary_color">#45d9fd</color>
+    <color name="my_app_primary_color">#048C34</color>
     <color name="my_app_secondary_color">#ee2560</color>
     <color name="my_app_third_color">#08182b</color>
-    <color name="my_app_text_color">#3f3f40</color>
+    <color name="my_app_text_color">#000000</color>
     <color name="my_app_four_color">#f4f4f4</color>
     <color name="my_app_background_color">#FFFFFF</color>
     <color name="my_app_error_color"></color>
@@ -21,6 +21,23 @@
     <color name="grey">#eaeaea</color>
     <color name="light_grey">#FFF9F9F9</color>
 
-    <color name="first_color">#58C9B9</color>
+    <color name="first_color">#048C34</color>
     <color name="second_color">#95E8CF</color>
+    <color name="dark_first_color">#209989</color>
+    <color name="complementary_color">#B36949</color>
+    <color name="budget_state_1">#048C34</color>
+    <color name="budget_state_2">#0AA640</color>
+    <color name="budget_state_3">#F2E41D</color>
+    <color name="budget_state_4">#F2B705</color>
+    <color name="budget_state_5">#BF0404</color>
+    <color name="background_color">#E9E9E9</color>
+    <color name="warnning_color">#BF0404</color>
+    <color name="dark_grey">#404040</color>
+    <color name="light_black">#8f8f8f</color>
+
+    <color name="user_input_color">#3f3f40</color>
+    <color name="unfocused_color">#E9E9E9</color>
+
+    <color name="light_budget_state_1">#66FF91</color>
+    <color name="light_budget_state_5">#FF0505</color>
 </resources>

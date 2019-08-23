@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/specs_height_xl"
+    android:paddingTop="@dimen/white_space_20"
+    android:paddingBottom="@dimen/white_space_20"
+    android:paddingLeft="@dimen/white_space_10"
+    android:paddingRight="@dimen/white_space_10"
+    android:background="@drawable/bottom_edge_light"
+    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2"
+        android:textSize="@dimen/font_xxxs"
+        android:fontFamily="@font/nanumsquarer"
+        android:text="07.29"
+        android:textColor="@color/light_black"/>
+    <TextView
+        android:id="@+id/memo"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        android:textSize="@dimen/font_xxs"
+        android:fontFamily="@font/nanumsquarer"
+        android:text="점심식대"
+        android:textColor="@color/my_app_text_color"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textSize="@dimen/font_xxs"
+            android:fontFamily="@font/nanumsquareb"
+            android:text="10,000원"
+            android:textColor="@color/my_app_text_color"/>
+        <TextView
+            android:id="@+id/remain_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textSize="@dimen/font_xxxs"
+            android:fontFamily="@font/nanumsquarer"
+            android:text="10,000원"
+            android:textColor="@color/light_black"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -11,4 +11,6 @@
     <dimen name="btn_bottom_height">60dp</dimen>
     <dimen name="specs_height">56dp</dimen>
     <dimen name="specs_height_max">64dp</dimen>
+    <dimen name="specs_height_xl">80dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

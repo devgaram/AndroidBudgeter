@@ -2,11 +2,20 @@
     <style name="Theme.MyApp" parent="Theme.AppCompat.NoActionBar">
 
         <!-- Original AppCompat attributes. -->
-        <item name="colorPrimary">@color/my_app_primary_color</item>
+        <item name="colorPrimary">@color/budget_state_1</item>
         <item name="colorSecondary">@color/my_app_secondary_color</item>
-        <item name="android:colorBackground">@color/my_app_background_color</item>
+        <item name="android:colorBackground">@color/white</item>
         <item name="colorError">@color/my_app_error_color</item>
-        <!--
+        <item name="colorAccent">@color/budget_state_1</item>
+        <item name="colorControlNormal">@color/grey</item>
+        <item name="android:textColorHint">@color/unfocused_color</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionModeBackground">@color/dark_grey</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_clear_white_24dp</item>
+        <item name="actionMenuTextColor">@color/colorDefaultFont</item>
+        <item name="android:textColor">@color/colorDefaultFont</item>
+
+<!--
         <item name="colorPrimaryVariant">@color/my_app_primary_variant_color</item>
         <item name="colorSecondaryVariant">@color/my_app_secondary_variant_color</item>
         <item name="colorSurface">@color/my_app_surface_color</item>
@@ -31,5 +40,23 @@
         <item name="textAppearanceOverline">@style/TextAppearance.MaterialComponents.Overline</item>-->
 
     </style>
+
+
+    <style name="Theme.MyApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MyApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="common_appbar_textview">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">6</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">@dimen/font_xxxs</item>
+        <item name="android:fontFamily">@font/nanumsquareb</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/my_app_text_color</item>
+    </style>
+
+
 
 </resources>
