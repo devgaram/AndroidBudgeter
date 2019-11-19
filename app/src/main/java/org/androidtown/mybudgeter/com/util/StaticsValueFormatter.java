@@ -24,7 +24,9 @@ public class StaticsValueFormatter extends ValueFormatter {
     @Override
     public String getAxisLabel(float value, AxisBase axis) {
         if (axis instanceof XAxis) {
-            return format.format(value);
+            int month = (int) value / 100;
+            int day = (int) value % 100;
+            return month + "/" + day;
         } else if (value > 0) {
             return format.format(value) + suffix;
         } else {

@@ -20,10 +20,10 @@ public interface ExpenditureDao {
     @Delete
     void delete(ExpenditureEntity expenditureEntity);
 
-    @Query("SELECT * FROM expenditure_table WHERE budetId=:budgetId")
-    LiveData<List<ExpenditureEntity>> getExpenditureForBudget(int budgetId);
+    @Query("SELECT A.*, B.amount as budgetAmount, 0 as remainAmount FROM expenditure_table AS A INNER JOIN budget_table AS B ON A.budetId = B.id WHERE budetId=:budgetId order by A.date desc")
+    LiveData<List<ExpenditureWithBudget>> getExpenditureForBudget(int budgetId);
 
-    @Query("select DATE(date) as edate, sum(amount) as daysum from expenditure_table where budetId=:budgetId group by date")
+    @Query("select strftime('%m%d', date/1000, 'unixepoch') as edate, sum(amount) as daysum from expenditure_table where budetId=:budgetId group by DATE(date/1000, 'unixepoch')")
     LiveData<List<ExpenditureStatics>> getExpenditureStaticsForBudget(int budgetId);
 
     @Insert
@@ -31,4 +31,7 @@ public interface ExpenditureDao {
 
     @Query("SELECT SUM(amount) FROM expenditure_table WHERE budetId=:budgetId")
     long getExpenditureSumForBudget(int budgetId);
+
+    @Query("SELECT * FROM expenditure_table WHERE id = :expenditureId")
+    LiveData<ExpenditureEntity> getExpenditureForExpenditureId (int expenditureId);
 }

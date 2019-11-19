@@ -26,6 +26,7 @@ public interface BudgetDao {
     @Query("SELECT a.*, b.id as category_id, b.name as category_name, sum(c.amount) as remainAmount FROM budget_table a"
             +" INNER JOIN category_table b ON a.categoryId = b.id "
             +" LEFT OUTER JOIN expenditure_table as c ON c.budetId = a.id"
+            +" WHERE DATE(a.endDate/1000, 'unixepoch') >= DATE(datetime('now','localtime'))"
             +" GROUP BY a.id, a.categoryId, a.startDate, a.endDate, a.period, a.amount, b.id, b.name")
     LiveData<List<BudgetWithCategory>> getAllBudgetWithCategory();
 

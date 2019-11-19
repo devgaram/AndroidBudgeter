@@ -1,4 +1,5 @@
 <resources>
+
     <style name="Theme.MyApp" parent="Theme.AppCompat.NoActionBar">
 
         <!-- Original AppCompat attributes. -->
@@ -15,7 +16,21 @@
         <item name="actionMenuTextColor">@color/colorDefaultFont</item>
         <item name="android:textColor">@color/colorDefaultFont</item>
 
-<!--
+
+        <!-- enable window content transitions -->
+        <item name="android:windowActivityTransitions">true</item>
+        <!-- specify shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">
+            @transition/change_bounds_transform
+        </item>
+        <item name="android:windowSharedElementExitTransition">
+            @transition/change_bounds_transform
+        </item>
+
+        <item name="android:alertDialogTheme">@style/lightAlertDialogStyle</item>
+
+
+        <!--
         <item name="colorPrimaryVariant">@color/my_app_primary_variant_color</item>
         <item name="colorSecondaryVariant">@color/my_app_secondary_variant_color</item>
         <item name="colorSurface">@color/my_app_surface_color</item>
@@ -43,6 +58,7 @@
 
 
     <style name="Theme.MyApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.MyApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="common_appbar_textview">
@@ -57,6 +73,32 @@
         <item name="android:textColor">@color/my_app_text_color</item>
     </style>
 
+    <style name="lightAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorDefaultFont</item>
+        <item name="colorPrimaryDark">@color/colorDefaultFont</item>
+        <item name="android:colorAccent">@color/colorDefaultFont</item>
+        <item name="android:windowMinWidthMajor">80%</item>
+        <item name="android:windowMinWidthMinor">80%</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/buttonBarButtonStyle.Negative
+        </item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/buttonBarButtonStyle.Positive
+        </item>
+    </style>
+
+    <style name="buttonBarButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored"></style>
+
+    <style name="buttonBarButtonStyle.Negative">
+        <item name="android:textColor">@color/colorDefaultFont</item>
+    </style>
+
+    <style name="buttonBarButtonStyle.Positive">
+        <item name="android:textColor">@color/budget_state_1</item>
+    </style>
+
+    <style name="Theme.MyApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
 
 </resources>

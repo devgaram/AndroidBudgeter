@@ -24,7 +24,9 @@
             android:label="@string/title_activity_expenditure_add"
             android:theme="@style/Theme.MyApp"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".view.budgetdetail.BudgetDetailActivity"></activity>
+        <activity android:name=".view.budgetdetail.BudgetDetailActivity" />
+        <activity android:name=".view.budgetdetail.ExpenditureModifyActivity" />
+        <activity android:name=".view.budgetdetail.BudgetModifyActivity" />
     </application>
 
 </manifest>

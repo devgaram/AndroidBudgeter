@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/specs_height_xl"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="@dimen/white_space_20"
     android:paddingBottom="@dimen/white_space_20"
     android:paddingLeft="@dimen/white_space_10"
     android:paddingRight="@dimen/white_space_10"
     android:background="@drawable/bottom_edge_light"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    >
     <TextView
+
         android:id="@+id/date"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -32,24 +34,26 @@
         android:layout_height="match_parent"
         android:layout_weight="0.4"
         android:orientation="vertical">
-        <TextView
+        <org.androidtown.mybudgeter.com.util.MoneyFormatView
             android:id="@+id/amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:textSize="@dimen/font_xxs"
             android:fontFamily="@font/nanumsquareb"
-            android:text="10,000원"
-            android:textColor="@color/my_app_text_color"/>
-        <TextView
+            android:text="1000"
+            android:textColor="@color/my_app_text_color"
+            android:transitionName="@string/bounds_transition"/>
+        <org.androidtown.mybudgeter.com.util.MoneyFormatView
             android:id="@+id/remain_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:textSize="@dimen/font_xxxs"
             android:fontFamily="@font/nanumsquarer"
-            android:text="10,000원"
+            android:text="500"
             android:textColor="@color/light_black"/>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -4,18 +4,16 @@ import android.arch.persistence.room.TypeConverters;
 
 import org.androidtown.mybudgeter.com.util.DateConverter;
 
-import java.util.Date;
-
 @TypeConverters(DateConverter.class)
 public class ExpenditureStatics {
-    private Date edate;
+    private String edate;
     private long daysum;
 
-    public Date getEdate() {
+    public String getEdate() {
         return edate;
     }
 
-    public void setEdate(Date edate) {
+    public void setEdate(String edate) {
         this.edate = edate;
     }
 

@@ -1,65 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/draw_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color">
+    android:background="@color/background_color"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <!--Top Appbar-->
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:elevation="0dp">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/specs_bar_height"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:background="@color/background_color"
-            app:contentInsetStart="0dp">
-            <android.support.design.button.MaterialButton
-                style="?attr/imageButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foreground="@drawable/ripple_effect"
-                android:backgroundTint="@android:color/transparent"
-                app:icon="@drawable/ic_dehaze_black_24dp"
-                app:iconTint="@color/my_app_text_color" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.85"
-                android:text="My Budgeter"
-                android:textColor="@color/my_app_text_color"
-                android:fontFamily="@font/nanumsquareb"
-                android:gravity="left"
-                android:layout_gravity="left"
-                android:textSize="@dimen/font_xxs"
-                android:textStyle="bold"/>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
-
-     <android.support.v7.widget.RecyclerView
-         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-         android:id="@+id/budget_list"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         tools:listitem="@layout/item_budget"
-         android:background="@color/background_color"/>
-
-
-    <!-- floating button-->
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btn_add_budget"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@id/budget_list"
-        app:layout_anchorGravity="bottom|right"
-        android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_round_add_24px"
-        app:tint="@color/my_app_text_color"
-        app:backgroundTint="@color/white"/>
-</android.support.design.widget.CoordinatorLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_main_drawer"
+        android:background="@color/background_color"
+        app:headerLayout="@layout/nav_header"/>
+
+    <include
+        layout="@layout/activity_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</android.support.v4.widget.DrawerLayout>
